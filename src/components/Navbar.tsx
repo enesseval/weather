@@ -31,8 +31,8 @@ function NavBar() {
 
    return (
       <div className="h-[60px] flex items-center justify-center p-5 border-b w-full mx-auto">
-         <div className="flex items-center space-x-3">
-            <IconComponent className="w-10 h-10 animate-logoIcons" />
+         <div className="flex items-center space-x-3 relative">
+            <IconComponent className="w-8 h-8 animate-logoIcons absolute -left-6" />
             <h1 className="font-bold text-3xl">Weather App</h1>
          </div>
          <div className="absolute right-5 ">
