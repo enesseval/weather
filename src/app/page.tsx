@@ -1,12 +1,15 @@
+import HourlyForecast from "@/components/HourlyForecast";
 import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
-import axios from "axios";
+import Weather from "@/components/Weather";
 
 export default function Home() {
    return (
       <div>
          <Navbar />
          <Search />
+         <Weather />
+         <HourlyForecast />
       </div>
    );
 }

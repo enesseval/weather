@@ -2,27 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import axios from "axios";
-
-interface City {
-   latitude: number;
-   longitude: number;
-   name: string;
-   countryCode: string;
-}
-
-interface GeoDBResponse {
-   data: City[];
-}
-
-interface Option {
-   value: string;
-   label: string;
-}
+import { useCity } from "@/app/context/CityContext";
+import { GeoDBResponse, Option } from "@/types/types";
+import { Skeleton } from "./ui/skeleton";
 
 function Search() {
    const id = Date.now().toString();
+   const { city, updateCity } = useCity();
    const [isMounted, setIsMounted] = useState(false);
-   const [value, setValue] = useState<Option | null>(null);
 
    useEffect(() => setIsMounted(true), []);
 
@@ -56,11 +43,16 @@ function Search() {
          });
    };
 
-   if (!isMounted) return null;
+   if (!isMounted)
+      return (
+         <div className="max-w-[500px] w-11/12 mx-auto mt-5">
+            <Skeleton className="w-full h-12" />
+         </div>
+      );
 
    return (
       <div className="max-w-[500px] w-11/12 mx-auto mt-5">
-         <AsyncPaginate debounceTimeout={600} className="text-zinc-800" id={id} loadOptions={loadOptions} value={value} onChange={setValue} placeholder="Please select a city.." />
+         <AsyncPaginate debounceTimeout={600} className="text-zinc-800" id={id} loadOptions={loadOptions} value={city} onChange={updateCity} placeholder="Please select a city.." />
       </div>
    );
 }

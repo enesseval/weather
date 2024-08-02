@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { CityProvider } from "./context/CityContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,12 +18,14 @@ export default function RootLayout({
    children: React.ReactNode;
 }>) {
    return (
-      <html lang="en" suppressHydrationWarning className="transition-all duration-500 ease-in-out">
-         <body className={inter.className} suppressHydrationWarning={true}>
-            <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
-               {children}
-            </ThemeProvider>
-         </body>
-      </html>
+      <CityProvider>
+         <html lang="en" suppressHydrationWarning className="transition-all duration-500 ease-in-out">
+            <body className={inter.className} suppressHydrationWarning={true}>
+               <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
+                  {children}
+               </ThemeProvider>
+            </body>
+         </html>
+      </CityProvider>
    );
 }
