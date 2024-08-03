@@ -23,7 +23,7 @@ function Footer() {
                <FaLinkedin className="w-6 h-6" />
             </Link>
          </div>
-         <div className="w-6/12 mx-auto text-center my-3">
+         <div className="w-11/12 md:w-6/12 mx-auto text-center my-3">
             <p>© 2024 Enes Seval. All rights reserved.</p>
          </div>
       </div>

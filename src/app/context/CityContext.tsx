@@ -1,5 +1,5 @@
 "use client";
-import { CityContextType, Option } from "@/types/types";
+import { CityContextType, CurrentWeather, Option } from "@/types/types";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { ActionMeta, SingleValue } from "react-select";
 
@@ -11,12 +11,13 @@ export const CityProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       label: "Eskişehir, TR",
    };
    const [city, setCity] = useState<Option | undefined>(defaultCity);
+   const [w, setW] = useState<CurrentWeather | undefined>();
 
    const updateCity = (newValue: SingleValue<Option>, actionMeta: ActionMeta<Option>) => {
       setCity(newValue as Option);
    };
 
-   return <CityContext.Provider value={{ city, updateCity }}>{children}</CityContext.Provider>;
+   return <CityContext.Provider value={{ city, updateCity, w, setW }}>{children}</CityContext.Provider>;
 };
 
 export const useCity = (): CityContextType => {

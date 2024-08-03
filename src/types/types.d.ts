@@ -6,6 +6,8 @@ export interface Option {
 export type CityContextType = {
    city: Option | undefined;
    updateCity: (newValue: SingleValue<Option>, actionMeta: ActionMeta<Option>) => void;
+   w: CurrentWeather | undefined;
+   setW;
 };
 export interface City {
    latitude: number;

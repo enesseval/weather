@@ -68,8 +68,6 @@ function HourlyForecast() {
 
    for (const day in daysMap) forecast4Day.push(daysMap[day]);
 
-   console.log(daysMap);
-
    if (!hourlyForecast)
       return (
          <>
@@ -116,17 +114,21 @@ function HourlyForecast() {
             <div className="flex flex-col items-center">
                {forecast4Day.map((day, index) => (
                   <div key={index} className={cn("flex items-center space-x-10", index !== 3 && "border-b")}>
-                     <Image src={`/weatherIcons/${day.lowIcon}.svg`} alt={day.lowIcon || ""} width={50} height={50} />
-                     <p className="relative">
-                        {day.lowTemp}
-                        <span className="absolute">°</span>
-                     </p>
-                     <p className="min-w-[100px] text-center">{day.day}</p>
-                     <p className="relative">
-                        {day.highTemp}
-                        <span className="absolute">°</span>
-                     </p>
-                     <Image src={`/weatherIcons/${day.highIcon}.svg`} alt={day.highIcon || ""} width={50} height={50} />
+                     {index < 4 && (
+                        <>
+                           <Image src={`/weatherIcons/${day.lowIcon}.svg`} alt={day.lowIcon || ""} width={50} height={50} />
+                           <p className="relative">
+                              {day.lowTemp}
+                              <span className="absolute">°</span>
+                           </p>
+                           <p className="min-w-[100px] text-center">{day.day}</p>
+                           <p className="relative">
+                              {day.highTemp}
+                              <span className="absolute">°</span>
+                           </p>
+                           <Image src={`/weatherIcons/${day.highIcon}.svg`} alt={day.highIcon || ""} width={50} height={50} />
+                        </>
+                     )}
                   </div>
                ))}
             </div>

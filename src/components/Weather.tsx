@@ -9,7 +9,7 @@ import { Separator } from "./ui/separator";
 import { Skeleton } from "./ui/skeleton";
 
 function Weather() {
-   const { city } = useCity();
+   const { city, setW } = useCity();
    const [weather, setWeather] = useState<CurrentWeather>();
 
    useEffect(() => {
@@ -23,9 +23,12 @@ function Weather() {
             })
             .catch((e) => console.log(e));
       };
-
       getWeather();
    }, [city]);
+
+   useEffect(() => {
+      if (weather) setW(weather);
+   }, [weather, setW]);
 
    if (!weather)
       return (
