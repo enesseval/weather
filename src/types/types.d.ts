@@ -74,3 +74,11 @@ export interface ForecastDays {
       }
    ];
 }
+
+export interface Forecast4Day {
+   day: string;
+   highTemp: number | null;
+   lowTemp: number | null;
+   highIcon: string | null;
+   lowIcon: string | null;
+}

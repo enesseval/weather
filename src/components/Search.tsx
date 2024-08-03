@@ -17,7 +17,7 @@ function Search() {
       method: "GET",
       url: "https://wft-geo-db.p.rapidapi.com/v1/geo/cities",
       headers: {
-         "X-RapidAPI-Key": "4019612f98msh79acfaf515dd398p156a92jsnad89244c6d47",
+         "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
          "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
       },
    };

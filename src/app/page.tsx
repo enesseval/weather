@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import HourlyForecast from "@/components/HourlyForecast";
 import Navbar from "@/components/Navbar";
 import Search from "@/components/Search";
@@ -10,6 +11,7 @@ export default function Home() {
          <Search />
          <Weather />
          <HourlyForecast />
+         <Footer />
       </div>
    );
 }
